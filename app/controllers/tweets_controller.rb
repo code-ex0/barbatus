@@ -27,5 +27,21 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:body)
   end
+  def destroy
 
+    @tweet = Tweet.find(params[:id])
+
+    @tweet.destroy
+
+    redirect_to '/', :notice => "Your tweet has been deleted"
+
+  end
+
+Inside tweet body
+
+      <% if current_user == tweet.user %>
+
+        <%= link_to "Delete", tweet_path(tweet.id), :confirm => "Are you sure?", :method => :delete %>
+
+      <% end %>
 end
