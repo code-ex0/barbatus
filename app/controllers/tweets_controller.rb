@@ -36,12 +36,5 @@ class TweetsController < ApplicationController
     redirect_to '/', :notice => "Your tweet has been deleted"
 
   end
-
-Inside tweet body
-
-      <% if current_user == tweet.user %>
-
-        <%= link_to "Delete", tweet_path(tweet.id), :confirm => "Are you sure?", :method => :delete %>
-
-      <% end %>
+  
 end
