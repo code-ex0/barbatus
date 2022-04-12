@@ -1,5 +1,5 @@
 <div>
-  <% @tweets.each do |tweet| %>
+  <% @tweets.reverse.each do |tweet| %>
     <tr>
       <h1><td><%= tweet.user.email %></td></h1>
       <h2><td><%= tweet.body %></td></h2>
