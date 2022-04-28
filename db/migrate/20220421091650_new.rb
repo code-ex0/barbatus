@@ -1,3 +1,15 @@
+class New < ActiveRecord::Migration[6.1]
+  def change
+    create_table "conversations", force: :cascade do |t|
+      t.integer "sender_id", null: false
+      t.integer "recipient_id", null: false
+      t.datetime "created_at", precision: 6, null: false
+      t.datetime "updated_at", precision: 6, null: false
+      t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+      t.index ["sender_id", "recipient_id"], name: "index_conversations_on_sender_id_and_recipient_id", unique: true
+      t.index ["sender_id"], name: "index_conversations_on_sender_id"
+    end
+
     create_table "favorites", force: :cascade do |t|
       t.boolean "liked"
       t.bigint "user_id", null: false
