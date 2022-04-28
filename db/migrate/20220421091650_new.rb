@@ -8,6 +8,16 @@
       t.index ["user_id"], name: "index_favorites_on_user_id"
     end
 
+    create_table "followings", force: :cascade do |t|
+      t.integer "followed_id"
+      t.integer "follower_id"
+      t.datetime "created_at", precision: 6, null: false
+      t.datetime "updated_at", precision: 6, null: false
+      t.index ["followed_id", "follower_id"], name: "index_followings_on_followed_id_and_follower_id", unique: true
+      t.index ["followed_id"], name: "index_followings_on_followed_id"
+      t.index ["follower_id"], name: "index_followings_on_follower_id"
+    end
+
     create_table "tweets", force: :cascade do |t|
       t.string "text"
       t.string "location"
