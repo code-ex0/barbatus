@@ -18,6 +18,17 @@
       t.index ["follower_id"], name: "index_followings_on_follower_id"
     end
 
+    create_table "messages", force: :cascade do |t|
+      t.text "content"
+      t.bigint "conversation_id"
+      t.bigint "user_id"
+      t.boolean "read", default: false
+      t.datetime "created_at", precision: 6, null: false
+      t.datetime "updated_at", precision: 6, null: false
+      t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+      t.index ["user_id"], name: "index_messages_on_user_id"
+    end
+
     create_table "tweets", force: :cascade do |t|
       t.string "text"
       t.string "location"
