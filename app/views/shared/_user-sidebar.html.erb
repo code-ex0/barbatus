@@ -1,0 +1,33 @@
+<div class="sidebarcontainer">
+
+  <div class="sbflexbox">
+
+    <div class="sbactions">
+      <%= link_to root_path, :class => 'home_links' do %>
+        <i class="fas fa-home"></i>
+        <sbacttext> Home  </sbacttext>
+      <% end %>
+    </div>
+    <div class="sbactions">
+      <%= link_to conversations_path, :class => 'home_links' do %>
+        <i class="fas fa-envelope"></i>
+        <sbacttext>Messages</sbacttext>
+      <% end %>
+    </div>
+    <div class="sbactions">
+      <%= link_to favs_user_path(@user), :class => 'home_links' do %>
+        <i class="fas fa-bookmark" style="padding-left: 3px;"></i>
+        <sbacttext>Bookmarks</sbacttext>
+      <% end %>
+    </div>
+    <div class="sbactions">
+      <i class="fas fa-user" style="padding-left: 3px;"></i>
+      <sbacttext>Profile</sbacttext>
+    </div>
+  </div>
+
+  <div class="sbtwtbtn">
+    <sometext>Tweet</sometext>
+  </div>
+
+</div>
