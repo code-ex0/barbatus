@@ -1,3 +1,13 @@
+    create_table "favorites", force: :cascade do |t|
+      t.boolean "liked"
+      t.bigint "user_id", null: false
+      t.bigint "tweet_id", null: false
+      t.datetime "created_at", precision: 6, null: false
+      t.datetime "updated_at", precision: 6, null: false
+      t.index ["tweet_id"], name: "index_favorites_on_tweet_id"
+      t.index ["user_id"], name: "index_favorites_on_user_id"
+    end
+
     create_table "tweets", force: :cascade do |t|
       t.string "text"
       t.string "location"
