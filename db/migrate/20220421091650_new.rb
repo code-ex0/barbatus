@@ -1,3 +1,12 @@
+    create_table "tweets", force: :cascade do |t|
+      t.string "text"
+      t.string "location"
+      t.bigint "user_id", null: false
+      t.datetime "created_at", precision: 6, null: false
+      t.datetime "updated_at", precision: 6, null: false
+      t.index ["user_id"], name: "index_tweets_on_user_id"
+    end
+
     create_table "users", force: :cascade do |t|
       t.string "email", default: "", null: false
       t.string "encrypted_password", default: "", null: false
@@ -12,3 +21,9 @@
       t.index ["email"], name: "index_users_on_email", unique: true
       t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     end
+
+    add_foreign_key "favorites", "tweets"
+    add_foreign_key "favorites", "users"
+    add_foreign_key "tweets", "users"
+  end
+end
