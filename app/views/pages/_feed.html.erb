@@ -1,0 +1,46 @@
+<div class="tweets-feed">
+  <% @tweets.each do |tweet|  %>
+    <div class="tweet-container">
+      <div class="tweet-body">
+        <div class="tw-cnt-avatar">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="tw-cnt-body">
+          <div class="tw-cnt-body-usr d-flex">
+            <%= link_to user_path(tweet.user.id) do  %>
+              <h3 class="mr-2"><%= tweet.user.username %></h3>
+            <% end  %>
+            <h4 class="mr-2">@<%= tweet.user.handle %></h4>
+            <h4 class="mr-2">-</h4>
+            <h4 class="mr-2"><%= time_ago_in_words(tweet.created_at) %></h4>
+          </div>
+          <div class="tw-cnt-body-text">
+            <%= tweet.text %>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-toolbar">
+        <div class="bottom-toolbar-items" data-controller="fav">
+
+          <div class="bottom-toolbar-item" data-action="mouseover->fav#overRP mouseout->fav#outRP">
+            <i class="far fa-comment" id="tweet-rp-<%= tweet.id %>" data-tweet-id="<%= tweet.id %>"></i>
+          </div>
+
+          <div class="bottom-toolbar-item" data-action="mouseover->fav#overRT mouseout->fav#outRT">
+            <i class="fas fa-retweet" id="tweet-rt-<%= tweet.id %>" data-tweet-id="<%= tweet.id %>"></i>
+          </div>
+
+          <div class="bottom-toolbar-item" data-action="click->fav#like mouseover->fav#over mouseout->fav#out">
+            <i class="  <%= current_user.liked?(tweet.id) ? 'fas' : 'far' %> fa-heart <%= 'heart-inactive' unless current_user.liked?(tweet.id) %>" data-tweet-id="<%= tweet.id %>" id="tweet-<%= tweet.id %>"></i>
+            <div id="fav-count-<%= tweet.id %>" class="fav_counter <%= 'counter-inactive' unless current_user.liked?(tweet.id) %>">
+              <%= tweet.total_favs %>
+            </div>
+          </div>
+          <div class="bottom-toolbar-item" data-action="mouseover->fav#overSH mouseout->fav#outSH">
+            <i class="fas fa-external-link-alt" id="tweet-sh-<%= tweet.id %>" data-tweet-id="<%= tweet.id %>"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
