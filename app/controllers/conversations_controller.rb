@@ -44,7 +44,6 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params[:conversation][:sender_id] = current_user
     params.require(:conversation).permit(:sender_id, :recipient_id)
   end
 end
