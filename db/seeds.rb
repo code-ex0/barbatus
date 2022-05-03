@@ -9,21 +9,33 @@
 require 'faker'
 
 p "0. Destroying all data"
+
 Following.destroy_all
 Tweet.destroy_all
 User.destroy_all
+
 p "1. Creating users..."
+
 30.times do
   name = Faker::Twitter.screen_name
-  User.create(name: name , email: "#{name}@mail.com", password: '123456',
-              password_confirmation: '123456')
+  User.create(username: name , handle: name, email: "#{name}@mail.com", password: '123456', password_confirmation: '123456', confirmed_at: Time.now)
 end
+
 p "2. Creating tweets..."
+
 70.times do
-  Tweet.create(user_id: rand(1..30), body: Faker::Lorem.sentence(word_count: 3, supplemental:
-    true, random_words_to_add: 4))
+  Tweet.create(user_id: rand(1..30), text: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4))
 end
+
 p "3. Creating followings..."
-300.times do
-  Following.create(followed_id: rand(1..30), follower_id: rand(1..30))
+
+followed = 1
+30.times do
+  follower = (1..30).to_a.shuffle
+  indexpos = 0
+  rand(5..30).times do
+    Following.create(followed_id: followed, follower_id: follower[indexpos])
+    indexpos += 1
+  end
+  followed += 1
 end

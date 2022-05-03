@@ -1,17 +1,21 @@
-<div>
-  <% @tweets.reverse.each do |tweet| %>
-    <tr>
-      <h1><td><%= tweet.user.email %></td></h1>
-      <h2><td><%= tweet.body %></td></h2>
-      <h3><td><%= tweet.created_at %></td></h3>
-      <% if current_user == tweet.user %>
-
-        <%= link_to "Delete", tweet_path(tweet.id), :confirm => "Are you sure?", :method => :delete %>
-
-      <% end %>
-    </tr>
-  <% end %>
-
+<div class="main">
+  <div class="side-bar">
+    <h1>Pages#home</h1>
+    <p>Find me in app/views/pages/home.html.erb</p>
+  </div>
+  <div class="main-center">
+    <div class="backtofeed">
+      <%= render 'backtofeed' %>
+    </div>
+    <div class="twtinput">
+      <%= render 'profile-data' %>
+    </div>
+    <div class="twtfeed">
+      <%= render 'profile-feed' %>
+    </div>
+  </div>
+  <div class="side-bar">
+    <h1>Pages#home</h1>
+    <p>Find me in app/views/pages/home.html.erb</p>
+  </div>
 </div>
-
-<%= link_to 'New Tweet', new_tweet_path(@user) %>

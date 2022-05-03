@@ -3,10 +3,10 @@ class ConversationsController < ApplicationController
   before_action :user_otheruser, only: [:index, :show]
 
   def index
-    # @user = current_user
-    # @users = User.all
-    # @conversations = Conversation.where("(sender_id = ? OR recipient_id = ?)", current_user.id, current_user.id).order(updated_at: :desc)
-    # @conversation = Conversation.new
+    @user = current_user
+    @users = User.all
+    @conversations = Conversation.where("(sender_id = ? OR recipient_id = ?)", current_user.id, current_user.id).order(updated_at: :desc)
+    @conversation = Conversation.new
   end
 
   def show
@@ -44,7 +44,7 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    # params[:conversation][:sender_id] = current_user
+    params[:conversation][:sender_id] = current_user
     params.require(:conversation).permit(:sender_id, :recipient_id)
   end
 end

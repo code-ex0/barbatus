@@ -1,40 +1,38 @@
 class TweetsController < ApplicationController
-  # before any blog action happens, it will authenticate the user
-  before_action :authenticate_user!
-  def index
-    @tweets = Tweet.all
-  end
-
-  def index
-    @tweets = Tweet.all
-  end
-
-  def new
-    @tweet = Tweet.new
-  end
-
   def create
+    if Following.find_by(followed_id: current_user.id, follower_id: current_user.id).nil?
+      Following.create(followed_id: current_user.id, follower_id: current_user.id)
+    end
+    @user = User.find(current_user.id)
     @tweet = Tweet.new(tweet_params)
-    @tweet.user_id = current_user.id
+    @tweet.user = @user
     if @tweet.save
-      redirect_to '/tweets#index'
+      redirect_to root_path
     else
-      render 'new'
+      redirect_to root_path
     end
   end
 
-  private
-  def tweet_params
-    params.require(:tweet).permit(:body)
-  end
-  def destroy
-
+  def like
+    # Tweet.first.favorites.create(user_id: 30)
     @tweet = Tweet.find(params[:id])
+    if !current_user.liked?(params[:id])
+      @like = @tweet.favorites.create(user_id: current_user.id)
+    else
+      @unlike = @tweet.favorites.find_by(user_id: current_user.id).destroy
+    end
 
-    @tweet.destroy
-
-    redirect_to '/', :notice => "Your tweet has been deleted"
+    respond_to do |format|
+      format.html {}
+      format.json { render json: { count: @tweet.total_favs, like: current_user.liked?(params[:id]) } }
+    end
 
   end
-  
+
+  private
+
+  def tweet_params
+    params.require(:tweet).permit(:text)
+  end
+
 end
