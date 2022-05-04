@@ -44,42 +44,8 @@
         </div>
       </div>
     </div>
-
-    <div class="conv-rb">
-      <div class="conv-rb-empty">
-        <h3>You don’t have a message selected</h3>
-        <mess>Choose one from your existing messages, or start a new one.</mess>
-      </div>
-    </div>
-
-  </div>
-
-
-</div>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-end" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <p class="modal-title" id="exampleModalLabel">New message</p>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- <p>HENLO CHATTO</p>  -->
-        <%= simple_form_for @conversation do |f| %>
-          <%= f.association :sender %>
-          <%= f.association :recipient, label: false %>
-          <div class="d-flex forms-buttons">
-            <%= link_to "Cancel", conversations_path, class: "btn-secondary" %>
-            <%= f.button :submit, 'Post', class: "btn btn-primary" %>
-        <% end  %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
+
+
+
