@@ -1,0 +1,42 @@
+h3 {
+  color: black;
+  font-size: 14px;
+}
+
+h4 {
+  color: grey;
+  font-size: 14px;
+}
+
+.nav-handle {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.usrname {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.usrdata {
+  color: $twt-dgray;
+  font-size: 14px;
+}
+
+.fa-arrow-left {
+  color: $twt-blue;
+  font-size: 18px;
+}
+
+.tweetscount {
+  color: $twt-dgray;
+  font-size: 12px;
+  // font-weight: lighter;
+}
+
+.followings{
+  display: flex;
+  justify-content: flex-start;
+}
