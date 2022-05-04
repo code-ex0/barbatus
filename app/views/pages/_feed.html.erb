@@ -31,7 +31,6 @@
           </div>
 
           <div class="bottom-toolbar-item" data-action="click->fav#like mouseover->fav#over mouseout->fav#out">
-
             <i class="  <%= current_user.liked?(tweet.id) ? 'fas' : 'far' %> fa-heart <%= 'heart-inactive' unless current_user.liked?(tweet.id) %>" data-tweet-id="<%= tweet.id %>" id="tweet-<%= tweet.id %>"></i>
             <div id="fav-count-<%= tweet.id %>" class="fav_counter <%= 'counter-inactive' unless current_user.liked?(tweet.id) %>">
               <%= tweet.total_favs %>
