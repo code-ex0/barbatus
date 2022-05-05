@@ -24,6 +24,7 @@
 }
 .child-convH {
   height: auto;
+  width:100%;
 }
 
 .child-msgsH {
@@ -49,7 +50,11 @@
   position: sticky;
   top: 68px;
   z-index: 5;
-  background-color: white;
+  background-color: black;
+}
+
+.fa-user-circle{
+	color:gray;
 }
 
 .text-blue {
@@ -88,7 +93,7 @@
 }
 
 a.conv_links {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -99,6 +104,22 @@ a.conv_links:hover {
 a.conv_links:focus {
   text-decoration: none;
   color: black;
+}
+
+#message_content{
+	background: black;
+  resize: none;
+  color:white;
+}
+
+.modal-content{
+	background:black;
+	color:white;
+}
+
+.form-control{
+	background:black;
+	color:white;
 }
 
 .conversations:hover {
@@ -125,6 +146,13 @@ a.conv_links:focus {
 
 .conv-date {
   white-space: nowrap;
+  flex:1;
+  display:flex;
+  justify-content:end;
+}
+
+textarea{
+	width:100%
 }
 
 // --------------------------RIGHT PANE INDEX----------------------------
@@ -150,6 +178,9 @@ a.conv_links:focus {
 
 // --------------------------RIGHT PANE SHOW----------------------------
 
+.mr-1{
+	color:gray;
+}
 
 .conv-head {
   padding: 0px 14px;
@@ -161,9 +192,9 @@ a.conv_links:focus {
   position: sticky;
   top: 68px;
   z-index: 5;
-  background-color: white;
+  background-color: black;
   h3 {
-    color: black;
+    color: white;
     font-size: 18px;
     margin-bottom: 4px;
   }
@@ -178,6 +209,7 @@ a.conv_links:focus {
   z-index: 1;
   padding: 18px 14px 0px 14px;
   top: 50px;
+  width:100%
 }
 
 
@@ -206,7 +238,7 @@ a.conv_links:focus {
   // background-color: red;
   padding-top: 8px;
   padding-bottom: 0px;
-  width: -webkit-fill-available;
+  width: 100%;
 }
 
 .form-inline {
@@ -225,11 +257,16 @@ a.conv_links:focus {
   }
 }
 
+.message-style p{
+	word-wrap: break-word;
+}
+
 .author-cont {
+	max-width:20em;
 }
 
 .message-style {
-  background-color: $twt-cgray;
+  background-color: $twt-dgray;
   margin-top: 10px;
   padding: 5px 10px;
   border-radius: 15px 15px 15px 0px;
@@ -239,7 +276,7 @@ a.conv_links:focus {
   min-width: 30%;
   // margin-left: 20px;
   &.current {
-    color: white;
+    color: $light;
     background-color: $twt-blue;
     border-radius: 15px 15px 0px 15px;
     // border-color: #f592855e;

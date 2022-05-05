@@ -39,3 +39,11 @@ followed = 1
   end
   followed += 1
 end
+
+p "4 Creating likes..."
+
+Tweet.all.each do |tweet|
+  rand(1..5).times do
+    Like.create(user_id: rand(1..30), tweet_id: tweet.id)
+  end
+end

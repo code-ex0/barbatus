@@ -2,6 +2,13 @@
 
 }
 
+
+@media only screen and (max-width: 1000px){
+  sbacttext{ 
+     font-size: none;
+   }
+}
+
 .sbflexbox {
   margin-top: 60px;
   display: flex;
@@ -35,9 +42,17 @@
   }
 }
 
+sbacttext{
+	color:white
+}
+
+.sbactions i{
+	color:white;
+}
+
 .sbactions:hover {
   color: $twt-blue !important;
-  background-color: #1DA1F220;
+  background-color: #cdab4352;
   border-radius: 25px;
   transition: .3s;
 }
