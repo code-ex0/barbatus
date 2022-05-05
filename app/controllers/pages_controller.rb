@@ -5,11 +5,11 @@ class PagesController < ApplicationController
     @tweet = Tweet.new
     @user = current_user
     if current_user.nil?
-      @tweets = Tweet.all.order("created_at")
+      @tweets = Tweet.all.order("created_at")[0..20]
     else
       @tweets = []
       current_user.followees.each do |follower|
-        follower.tweets.each do |tweet|
+        follower.tweets[0..5].each do |tweet|
           @tweets << tweet
         end
       end
